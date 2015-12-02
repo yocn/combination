@@ -11,13 +11,13 @@ import android.view.WindowManager;
 
 import yocn.com.collection.utils.SystemBarTintManager;
 
-public class RecycleViewAct extends ActionBarActivity {
+public class RecycleViewAct extends BaseActivity {
 
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recycle_view);
+        setContentView(getLayoutInflater().inflate(R.layout.activity_recycle_view, null));
         initSystemBar();
     }
 

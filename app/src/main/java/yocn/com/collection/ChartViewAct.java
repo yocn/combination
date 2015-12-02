@@ -15,7 +15,7 @@ import java.util.Random;
 import yocn.com.collection.utils.ChartBean;
 import yocn.com.collection.view.ChartView;
 
-public class ChartViewAct extends ActionBarActivity implements OnClickListener {
+public class ChartViewAct extends BaseActivity implements OnClickListener {
     private RelativeLayout ll_full;
     private ChartView cv_chart;
     private Button bt_change;
@@ -31,7 +31,7 @@ public class ChartViewAct extends ActionBarActivity implements OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chart);
+        setContentView(getLayoutInflater().inflate(R.layout.activity_chart, null));
         ll_full = (RelativeLayout) findViewById(R.id.ll_full);
         cv_chart = (ChartView) findViewById(R.id.cv_chart);
 //        bt_change = (Button) findViewById(R.id.bt_change);

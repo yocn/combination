@@ -1,19 +1,18 @@
 <resources>
 
+    <!--定义主题使用parent引用我们自定义的AppTheme.Base主题-->
+    <style name="AppTheme" parent="AppTheme.Base"></style>
 
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
-
-        <!-- toolbar（actionbar）颜色 -->
-        <item name="colorPrimary">#4876FF</item>
-        <!-- 状态栏颜色 -->
-        <item name="colorPrimaryDark">#3A5FCD</item>
-        <!-- 窗口的背景颜色 -->
-        <item name="android:windowBackground">@android:color/white</item>
-        <!-- SearchView -->
-        <item name="searchViewStyle">@style/MySearchViewStyle</item>
+    <style name="AppTheme.Base" parent="Theme.AppCompat">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!-- Actionbar color -->
+        <item name="colorPrimary">#1b9dff</item>
+        <!--Status bar color-->
+        <item name="colorPrimaryDark">#3d85c6</item>
+        <!--Window color-->
+        <item name="android:windowBackground">@color/dim_foreground_material_dark</item>
     </style>
-
-    <style name="AppTheme" parent="@style/AppBaseTheme"></style>
 
     <style name="MySearchViewStyle" parent="Widget.AppCompat.SearchView">
 

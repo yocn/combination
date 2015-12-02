@@ -11,13 +11,13 @@ import android.view.WindowManager;
 
 import yocn.com.collection.utils.SystemBarTintManager;
 
-public class ParabolaViewAct extends ActionBarActivity {
+public class ParabolaViewAct extends BaseActivity {
 
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parabola);
+        setContentView(getLayoutInflater().inflate(R.layout.activity_parabola, null));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             setTranslucentStatus(true);
         }

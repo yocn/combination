@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -18,8 +19,8 @@ import yocn.com.collection.adapter.MainAdapter;
 import yocn.com.collection.bean.MainItemBean;
 
 
-public class MainActivity extends ActionBarActivity {
-
+public class MainActivity extends BaseActivity {
+    Toolbar toolbar;
     RecyclerView rv_main;
     ArrayList mMainItemBeanList = new ArrayList<MainItemBean>();
     /**
@@ -32,7 +33,10 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(getLayoutInflater().inflate(R.layout.activity_main, null));
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Combition");
+        setSupportActionBar(toolbar);
         rv_main = (RecyclerView) findViewById(R.id.rv_main);
         String[] mTitles = new String[]{"RippleView", "ChartView", "BarChartView", "ParabolaView", "Path", "RecycleView"};
         Class[] mTarget = new Class[]{RippleViewActivity.class, ChartViewAct.class, BarChartViewAct.class, ParabolaViewAct.class, PathActivity.class, RecycleViewAct.class};

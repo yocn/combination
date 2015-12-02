@@ -1,15 +1,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:fitsSystemWindows="true" >
+    android:fitsSystemWindows="true">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
 
     <yocn.com.collection.view.ParabolaView
         android:id="@+id/cv_chart"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_below="@id/toolbar"
         android:layout_centerInParent="true"
-        android:background="#cccccc" >
-    </yocn.com.collection.view.ParabolaView>
+        android:background="#cccccc"/>
 
 </RelativeLayout>

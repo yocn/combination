@@ -14,9 +14,10 @@ import android.graphics.PathDashPathEffect;
 import android.graphics.PathEffect;
 import android.graphics.SumPathEffect;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-public class PathActivity extends Activity {
+public class PathActivity extends BaseActivity {
     /**
      * Called when the activity is first created.
      */
@@ -24,6 +25,8 @@ public class PathActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(new MyView(this));
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 
     class MyView extends View {

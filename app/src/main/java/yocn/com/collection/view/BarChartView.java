@@ -26,7 +26,7 @@ public class BarChartView extends View {
     /**
      * 柱状条的高度
      */
-    private int chartHeight = 0;
+    private int chartHeight = 1;
     /**
      * 柱状条的长度
      */
