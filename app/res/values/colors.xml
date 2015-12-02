@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="actionbar_bg">#FF0099CC</color>
+    <color name="statusbar_bg">#FF006080</color>
+    
+    <color name="black">#ff000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="green">#ff00ff00</color>
+    <color name="yellow">#ffffff00</color>
+    <color name="blue">#ffff0000</color>
+    <color name="red">#ffff0000</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparent_half">#d4ffffff</color>
+    <color name="blank_trans">#23000000</color>
+    <!-- 灰色 -->
+    <color name="grey">#ffEBEBEB</color>
+    <color name="grey_top_light_text">#ff999999</color>
+    <color name="grey_top_dark_text">#ff333333</color>
+    <color name="grey_tab_divider">#ffcccccc</color>
+    <color name="grey_tab_background">#fff9f9f9</color>
+    <color name="grey_price_content_text">#999999</color>
+    <color name="grey_seil_top_text">#ffafafaf</color>
+    <color name="grey_price_seil_content_text">#aaaaaa</color>
+    <color name="grey_price_seil_top_text">#666666</color>
+    <color name="grey_item_price_category_layout_bg">#F8F8F8</color>
+    <color name="grey_price_cutline_bg">#eeeeee</color>
+    <color name="grey_dialogue_cutline_bg">#cccccc</color>
+    <color name="grey_dialogue_bottom_bg">#f7f7f7</color>
+    <color name="grey_dialogue_send_btn_bg">#666666</color>
+    <color name="grey_supply_classification_cutline">#d8d8d8</color>
+    <color name="grey_supply_text">#777777</color>
+    <color name="grey_search_inputbox_bg">#f5f4f4</color>
+    <color name="grey_report_price_hint_text">#bbbbbb</color>
+    <color name="grey_want_buy_text">#888888</color>
+    <color name="grey_switch_market_header_bg">#efefef</color>
+    <color name="grey_login_dialog_bg">#f3f3f3</color>
+    <color name="grey_login_line">#ffC7C7C7</color>
+    <!-- 绿色 -->
+    <color name="green_chart_dark">#ff099d46</color>
+    <color name="green_chart">#ff4fd558</color>
+    <color name="green_publish_button">#ff29bc66 </color>
+    <color name="green_publish_button_trans">#dc29bc66 </color>
+    <color name="green_seil_text">#05994F</color>
+    <color name="green_login_button">#ff247341 </color>
+    <color name="green_price_light_content_text">#4fd558 </color>
+    <color name="green_price_dark_content_text">#099D46</color>
+    <!-- 橙色 -->
+    <color name="orange_purchurse_button">#fffea753 </color>
+    <color name="orange_price_contnet_text">#ff7d3e</color>
+    <color name="orange_resend_button">#ffFF7C40 </color>
+
+    <!-- 选择要卖的商品类别需要的颜色值 -->
+    <color name="color1">#ff96E861 </color>
+    <color name="color2">#ffFD925E </color>
+    <color name="color3">#ff55CDFF </color>
+    <color name="color4">#ff55D8D1 </color>
+    <color name="color5">#ffF9C039 </color>
+    <color name="color6">#ffD3ABF2 </color>
+    <color name="color7">#ffBE9F7F </color>
+    <color name="color8">#ff78D795 </color>
+    <color name="color9">#ffFE7877 </color>
+
+    <!-- 黑色 -->
+    <color name="black_price_top_text">#333333</color>
+    <color name="error_view_retry_button_background">#30000000</color>
+    <color name="error_view_retry_button_background_stroke">#50000000</color>
+    <color name="apptheme_accent">#FF4081</color>
+
+    <color name="select_item_text_color1">#333333</color>
+    <color name="select_top_cutline_color">#cccccc</color>
+    <color name="select_top_bar_text_color">#666666</color>
+    <color name="select_item_tips_color">#4cc946</color>
+    
+</resources>

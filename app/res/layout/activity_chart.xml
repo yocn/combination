@@ -1,0 +1,30 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RelativeLayout
+        android:id="@+id/ll_full"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <yocn.com.collection.view.ChartView
+            android:id="@+id/cv_chart"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true" >
+        </yocn.com.collection.view.ChartView>
+        <!--
+        <Button
+            android:id="@+id/bt_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="50dp"
+            android:text="Change" />
+        -->
+    </RelativeLayout>
+
+</RelativeLayout>
