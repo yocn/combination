@@ -19,13 +19,12 @@ import yocn.com.collection.utils.Logger;
 public class ParabolaView extends ImageView {
     private Path path2 = new Path();
     private Paint p = new Paint();
-    private float x;
     private float mWidth;
     private float baseY;
     private float deltaY;
     private float y;
-    private float limitY = 600;
-    private float mBaseHeight;
+    private float x;
+    private float limitY = 400;
 
     public ParabolaView(Context context) {
         super(context);
@@ -37,58 +36,67 @@ public class ParabolaView extends ImageView {
 
     public ParabolaView(Context context, AttributeSet attrs) {
         super(context, attrs);
+//        limitY = DisplayUtils.Dp2Px(context, 200);
         mWidth = DisplayUtils.getScreenWidth(context);
-        mBaseHeight = DisplayUtils.getScreenHeight(context) / 2;
-        p.setColor(Color.BLUE);
+        p.setColor(Color.rgb(27, 157, 255));
         p.setAntiAlias(true);
         p.setStrokeWidth(10);
         path2.moveTo(0, 0);// 设置Path的起点
         path2.quadTo(mWidth / 2, 0, mWidth, 0); // 设置贝塞尔曲线的控制点坐标和终点坐标
+        Logger.d("---" + limitY);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                baseY = event.getY();
+                actionDown(event);
                 break;
             case MotionEvent.ACTION_UP:
-                Logger.d("ACTION_UP----" + y);
-                while (deltaY >= 0) {
-//                    try {
-//                        Thread.sleep(5);
-//                    } catch (InterruptedException e) {
-//                    }
-                    deltaY = deltaY - 13;
-                    Logger.d("yy----" + deltaY);
-                    path2.reset();
-                    path2.moveTo(0, 0);// 设置Path的起点
-                    path2.quadTo(mWidth / 2, deltaY, mWidth, 0); // 设置贝塞尔曲线的控制点坐标和终点坐标
-                    invalidate();
-                }
+                actionUp();
                 break;
             case MotionEvent.ACTION_MOVE:
-                y = event.getY();
-                deltaY = y - baseY;
-                deltaY = deltaY < limitY ? deltaY : limitY;
-                path2.reset();
-                path2.moveTo(0, 0);// 设置Path的起点
-                path2.quadTo(mWidth / 2, deltaY, mWidth, 0); // 设置贝塞尔曲线的控制点坐标和终点坐标
-                invalidate();
+                actionMove(event);
                 break;
         }
         return true;
     }
 
+    public void actionDown(MotionEvent event) {
+        baseY = event.getY();
+    }
+
+    public void actionUp() {
+        while (deltaY >= 0) {
+            deltaY = deltaY - 13;
+            path2.reset();
+            path2.moveTo(0, 0);// 设置Path的起点
+            path2.quadTo(mWidth / 2, deltaY, mWidth, 0); // 设置贝塞尔曲线的控制点坐标和终点坐标
+            invalidate();
+        }
+    }
+
+    public void actionMove(MotionEvent event) {
+        y = event.getY();
+        x = event.getX();
+        x = (x < mWidth / 4) ? mWidth / 4 : x;
+        x = (x > 3 * mWidth / 4) ? mWidth * 3 / 4 : x;
+        deltaY = y - baseY;
+        Logger.d("-----" + deltaY);
+        deltaY = deltaY < limitY ? deltaY : limitY;
+        path2.reset();
+        path2.moveTo(0, limitY - deltaY);// 设置Path的起点
+        path2.quadTo(x, limitY, mWidth, limitY - deltaY); // 设置贝塞尔曲线的控制点坐标和终点坐标
+        invalidate();
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Logger.d("onDraw");
-        p.setColor(Color.BLUE);
+        p.setColor(Color.rgb(27, 157, 255));
         p.setAntiAlias(true);
         p.setStrokeWidth(10);
         canvas.drawPath(path2, p);// 画出贝塞尔曲线
     }
-
 
 }

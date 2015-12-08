@@ -7,12 +7,25 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-    <yocn.com.collection.view.ParabolaView
-        android:id="@+id/cv_chart"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/toolbar"
-        android:layout_centerInParent="true"
-        android:background="#cccccc"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar">
+
+        <yocn.com.collection.view.ParabolaView
+            android:id="@+id/para"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
+        <yocn.com.collection.view.Pull2RefreshList
+            android:id="@+id/lv_chart"
+            android:layout_width="fill_parent"
+            android:background="#ffffff"
+            android:divider="#888888"
+            android:overScrollMode="never"
+            android:dividerHeight="1px"
+            android:layout_height="fill_parent" />
+    </FrameLayout>
+
 
 </RelativeLayout>
