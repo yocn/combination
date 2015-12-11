@@ -8,15 +8,17 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import yocn.com.collection.adapter.MainAdapter;
 import yocn.com.collection.bean.MainItemBean;
-
 
 public class MainActivity extends BaseActivity {
     RecyclerView rv_main;
@@ -68,6 +70,7 @@ public class MainActivity extends BaseActivity {
         //设置菜单列表
         arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, lvs);
         lvLeftMenu.setAdapter(arrayAdapter);
+        toolbar.setOnMenuItemClickListener(onMenuItemClick);
     }
 
     private void initScrollView() {
@@ -87,4 +90,20 @@ public class MainActivity extends BaseActivity {
         rv_main.setAdapter(mMainAdapter);
     }
 
+    private Toolbar.OnMenuItemClickListener onMenuItemClick = new Toolbar.OnMenuItemClickListener() {
+        @Override
+        public boolean onMenuItemClick(MenuItem menuItem) {
+            switch (menuItem.getItemId()) {
+                case R.id.action_settings:
+                    break;
+            }
+            return true;
+        }
+    };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 }
