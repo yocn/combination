@@ -1,0 +1,17 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <TextView
+        android:id="@+id/tv_setting"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:textColor="@color/black"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:textSize="20sp"
+        android:layout_centerVertical="true"
+        android:text="1234567/9" />
+
+</RelativeLayout>

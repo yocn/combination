@@ -1,5 +1,7 @@
 package yocn.com.collection;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,6 +13,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -19,6 +22,7 @@ import java.util.ArrayList;
 
 import yocn.com.collection.adapter.MainAdapter;
 import yocn.com.collection.bean.MainItemBean;
+import yocn.com.collection.utils.Logger;
 
 public class MainActivity extends BaseActivity {
     RecyclerView rv_main;
@@ -28,29 +32,30 @@ public class MainActivity extends BaseActivity {
     private Toolbar toolbar;
     private ActionBarDrawerToggle mDrawerToggle;
     private ListView lvLeftMenu;
-    private String[] lvs = {"List Item 01", "List Item 02", "List Item 03", "List Item 04"};
+    private String[] lvs = {"Setting", "About Us"};
     private ArrayAdapter arrayAdapter;
+    public static Activity mMainActivity ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutInflater().inflate(R.layout.activity_main, null));
-        init();
+        mMainActivity = this;
+        initView();
         initDrawerLayout();
         initScrollView();
     }
 
-    private void init() {
+    private void initView() {
+        rv_main = (RecyclerView) findViewById(R.id.rv_main);
         lvLeftMenu = (ListView) findViewById(R.id.lv_left_menu);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer_layout.openDrawer(Gravity.LEFT);
     }
 
     private void initDrawerLayout() {
         toolbar.setTitle("Combition");
         setSupportActionBar(toolbar);
-        rv_main = (RecyclerView) findViewById(R.id.rv_main);
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //创建返回键，并实现打开关/闭监听
@@ -70,6 +75,18 @@ public class MainActivity extends BaseActivity {
         //设置菜单列表
         arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, lvs);
         lvLeftMenu.setAdapter(arrayAdapter);
+        lvLeftMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                        goSettingActivity();
+                        break;
+                    case 1:
+                        break;
+                }
+            }
+        });
         toolbar.setOnMenuItemClickListener(onMenuItemClick);
     }
 
@@ -95,15 +112,22 @@ public class MainActivity extends BaseActivity {
         public boolean onMenuItemClick(MenuItem menuItem) {
             switch (menuItem.getItemId()) {
                 case R.id.action_settings:
+                    goSettingActivity();
                     break;
             }
             return true;
         }
     };
 
+    private void goSettingActivity() {
+        Intent intent = new Intent(this, SettingAct.class);
+        startActivity(intent);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
 }

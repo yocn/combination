@@ -3,6 +3,12 @@
     <!--定义主题使用parent引用我们自定义的AppTheme.Base主题-->
     <style name="AppTheme" parent="AppTheme.Base"></style>
 
+    <style name="AppThemeRed" parent="AppTheme.Base">
+        <item name="colorPrimary">#ff4444</item>
+        <!--Status bar color-->
+        <item name="colorPrimaryDark">#faaaaa</item>
+    </style>
+
     <style name="AppTheme.Base" parent="Theme.AppCompat">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

@@ -1,5 +1,6 @@
 package yocn.com.collection;
 
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import yocn.com.collection.application.MyApplication;
 import yocn.com.collection.utils.SystemBarTintManager;
 
 /**
@@ -17,6 +19,7 @@ import yocn.com.collection.utils.SystemBarTintManager;
  */
 public class BaseActivity extends ActionBarActivity {
     Toolbar toolbar;
+    private int[] styles = {R.style.AppTheme, R.style.AppThemeRed};
 
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
@@ -26,14 +29,29 @@ public class BaseActivity extends ActionBarActivity {
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
-
     }
 
     @Override
     public void setContentView(View view) {
         toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        addActivity2List(this);
+        setTheme(styles[MyApplication.styleIndex]);
         super.setContentView(view);
+    }
+
+    @Override
+    protected void onDestroy() {
+        removeFromActivityList(this);
+        super.onDestroy();
+    }
+
+    public void addActivity2List(Activity act) {
+        MyApplication.actitivitys.add(act);
+    }
+
+    public void removeFromActivityList(Activity act) {
+        MyApplication.actitivitys.remove(act);
     }
 
 }
