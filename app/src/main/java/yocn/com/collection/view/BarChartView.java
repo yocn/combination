@@ -88,7 +88,7 @@ public class BarChartView extends View {
         p.setAntiAlias(true);
         p.setStrokeWidth(10);
 
-        Bitmap b = Bitmap.createBitmap(chartWidth, chartHeight, Bitmap.Config.ARGB_4444);
+//        Bitmap b = Bitmap.createBitmap(chartWidth, chartHeight, Bitmap.Config.ARGB_4444);
 
         // canvas.drawCircle(50, x1, 10, p);
         canvas.drawRect(0, 0, chartWidth, chartHeight, p);

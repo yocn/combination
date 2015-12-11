@@ -95,8 +95,8 @@ public class Pull2RefreshList extends ListView {
                 if (deltaY >= mHeadViewHeight) {
                     deltaY = mHeadViewHeight;
                 }
-                Logger.d("--delatY--)" + deltaY);
-                Logger.d("--mHeadViewHeight--)" + mHeadViewHeight);
+//                Logger.d("--delatY--)" + deltaY);
+//                Logger.d("--mHeadViewHeight--)" + mHeadViewHeight);
                 mHeaderView.setPadding(0, (int) (-1 * mHeadViewHeight + deltaY), 0, 0);
                 mParabolaView.actionMove(ev);
                 break;

@@ -20,7 +20,10 @@ public class ParabolaView extends ImageView {
     private Path path2 = new Path();
     private Paint p = new Paint();
     private float mWidth;
-    private float baseY;
+    /**
+     * 手指按下去时候的Y坐标
+     */
+    private float baseY;//手指按下去时候的Y坐标
     private float deltaY;
     private float y;
     private float x;
@@ -76,16 +79,26 @@ public class ParabolaView extends ImageView {
         }
     }
 
+    /**
+     * baseY:手指按下去时候的Y坐标
+     * deltaY:抛物线的高度，同贝塞尔曲线的顶点高度
+     * limitY:抛物线最大限制高度
+     *
+     * @param event
+     */
     public void actionMove(MotionEvent event) {
         y = event.getY();
         x = event.getX();
         x = (x < mWidth / 4) ? mWidth / 4 : x;
         x = (x > 3 * mWidth / 4) ? mWidth * 3 / 4 : x;
         deltaY = y - baseY;
+        if( deltaY < limitY ){
+        }else{
+            deltaY = limitY;
+        }
         Logger.d("-----" + deltaY);
-        deltaY = deltaY < limitY ? deltaY : limitY;
         path2.reset();
-        path2.moveTo(0, limitY - deltaY);// 设置Path的起点
+        path2.moveTo(0, limitY - deltaY);// 设置Path的起点,跟listview配合，listview设置了ParabolaView的padding，需要跟随listview发生变化
         path2.quadTo(x, limitY, mWidth, limitY - deltaY); // 设置贝塞尔曲线的控制点坐标和终点坐标
         invalidate();
     }

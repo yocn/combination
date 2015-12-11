@@ -12,6 +12,12 @@
         <item name="colorPrimaryDark">#3d85c6</item>
         <!--Window color-->
         <item name="android:windowBackground">@color/dim_foreground_material_dark</item>
+        <!--返回键样式-->
+        <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowToggle</item>
+    </style>
+
+    <style name="AppTheme.DrawerArrowToggle" parent="Base.Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@android:color/white</item>
     </style>
 
     <style name="MySearchViewStyle" parent="Widget.AppCompat.SearchView">
