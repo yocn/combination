@@ -4,9 +4,28 @@
     <style name="AppTheme" parent="AppTheme.Base"></style>
 
     <style name="AppThemeRed" parent="AppTheme.Base">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!-- Actionbar color -->
         <item name="colorPrimary">#ff4444</item>
         <!--Status bar color-->
-        <item name="colorPrimaryDark">#faaaaa</item>
+        <item name="colorPrimaryDark">#ff4444</item>
+        <!--Window color-->
+        <item name="android:windowBackground">@color/dim_foreground_material_dark</item>
+        <!--返回键样式-->
+        <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowToggle</item>
+    </style>
+    <style name="AppThemeMaterial" parent="AppTheme.Base">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!-- Actionbar color -->
+        <item name="colorPrimary">@color/material_deep_teal_500</item>
+        <!--Status bar color-->
+        <item name="colorPrimaryDark">@color/material_deep_teal_500</item>
+        <!--Window color-->
+        <item name="android:windowBackground">@color/dim_foreground_material_dark</item>
+        <!--返回键样式-->
+        <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowToggle</item>
     </style>
 
     <style name="AppTheme.Base" parent="Theme.AppCompat">
@@ -15,11 +34,12 @@
         <!-- Actionbar color -->
         <item name="colorPrimary">#1b9dff</item>
         <!--Status bar color-->
-        <item name="colorPrimaryDark">#3d85c6</item>
+        <item name="colorPrimaryDark">#1b9dff</item>
         <!--Window color-->
         <item name="android:windowBackground">@color/dim_foreground_material_dark</item>
         <!--返回键样式-->
         <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowToggle</item>
+
     </style>
 
     <style name="AppTheme.DrawerArrowToggle" parent="Base.Widget.AppCompat.DrawerArrowToggle">

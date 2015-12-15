@@ -1,22 +1,31 @@
 package yocn.com.collection;
 
 import android.os.Bundle;
-import android.widget.ListView;
 
 import yocn.com.collection.adapter.BarChartAdapter;
-import yocn.com.collection.adapter.ParaListAdapter;
+import yocn.com.collection.view.ParabolaView;
+import yocn.com.collection.view.Pull2RefreshList;
 
-public class ParabolaViewAct extends BaseActivity {
-    ListView lv_chart;
+public class ParabolaViewAct extends BaseActivity implements Pull2RefreshList.OnFreshListener {
+    Pull2RefreshList lv_chart;
+    ParabolaView parabolaView;
+    BarChartAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutInflater().inflate(R.layout.activity_parabola, null));
 
-        lv_chart = (ListView) findViewById(R.id.lv_chart);
-        BarChartAdapter adapter = new BarChartAdapter(this);
+        lv_chart = (Pull2RefreshList) findViewById(R.id.lv_chart);
+        parabolaView = (ParabolaView) findViewById(R.id.para);
+        lv_chart.setOnFreshListener(this);
+
+        adapter = new BarChartAdapter(this);
         lv_chart.setAdapter(adapter);
     }
 
+    @Override
+    public void refresh() {
+        adapter.notifyDataSetChanged();
+    }
 }

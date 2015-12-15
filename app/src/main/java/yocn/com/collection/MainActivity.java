@@ -34,13 +34,20 @@ public class MainActivity extends BaseActivity {
     private ListView lvLeftMenu;
     private String[] lvs = {"Setting", "About Us"};
     private ArrayAdapter arrayAdapter;
-    public static Activity mMainActivity ;
+    public static Activity mMainActivity;
+    public static int TYPE_THEME = 1000;
+    public static final int TYPE_THEME_BASE = 1000;
+    public static final int TYPE_THEME_RED = 1001;
+    public static final int TYPE_THEME_MATERIAL = 1002;
+    MainAdapter mMainAdapter;
+    MainItemBean mMainItemBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutInflater().inflate(R.layout.activity_main, null));
         mMainActivity = this;
+        setTheme();
+        setContentView(getLayoutInflater().inflate(R.layout.activity_main, null));
         initView();
         initDrawerLayout();
         initScrollView();
@@ -91,14 +98,16 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initScrollView() {
+        Logger.d("initScrollView");
         String[] mTitles = new String[]{"RippleView", "ChartView", "BarChartView", "ParabolaView", "Path", "RecycleView"};
         Class[] mTarget = new Class[]{RippleViewActivity.class, ChartViewAct.class, BarChartViewAct.class, ParabolaViewAct.class, PathActivity.class, RecycleViewAct.class};
-        MainItemBean mMainItemBean;
+
         for (int i = 0; i < mTarget.length; i++) {
             mMainItemBean = new MainItemBean(mTitles[i], mTarget[i]);
             mMainItemBeanList.add(mMainItemBean);
         }
-        MainAdapter mMainAdapter = new MainAdapter(this, mMainItemBeanList);
+
+        mMainAdapter = new MainAdapter(this, mMainItemBeanList);
         rv_main.setLayoutManager(new LinearLayoutManager(this));
         // 设置ItemAnimator
         rv_main.setItemAnimator(new DefaultItemAnimator());
@@ -118,6 +127,20 @@ public class MainActivity extends BaseActivity {
             return true;
         }
     };
+
+    private void setTheme() {
+        switch (TYPE_THEME) {
+            case TYPE_THEME_BASE:
+                setTheme(R.style.AppTheme);
+                break;
+            case TYPE_THEME_RED:
+                setTheme(R.style.AppThemeRed);
+                break;
+            case TYPE_THEME_MATERIAL:
+                setTheme(R.style.AppThemeMaterial);
+                break;
+        }
+    }
 
     private void goSettingActivity() {
         Intent intent = new Intent(this, SettingAct.class);

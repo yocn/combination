@@ -23,11 +23,18 @@ public class ParabolaView extends ImageView {
     /**
      * 手指按下去时候的Y坐标
      */
-    private float baseY;//手指按下去时候的Y坐标
+    private float downBaseY;//向下滑动的时候，作为基准的Y坐标
+    private float upBaseY;//向上滑动的时候，作为基准的Y坐标
     private float deltaY;
     private float y;
     private float x;
+    float paddingY;
     private float limitY = 400;
+    /**
+     * 判断是上拉还是下拉
+     */
+    private boolean isDownOrUp = false;
+    private float previousY;//存储之前的Y坐标，判断是向上滑动还是向下滑动
 
     public ParabolaView(Context context) {
         super(context);
@@ -51,7 +58,9 @@ public class ParabolaView extends ImageView {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+
         switch (event.getAction()) {
+//            Logger.d("---" + event.getOrientation());
             case MotionEvent.ACTION_DOWN:
                 actionDown(event);
                 break;
@@ -66,7 +75,7 @@ public class ParabolaView extends ImageView {
     }
 
     public void actionDown(MotionEvent event) {
-        baseY = event.getY();
+        previousY = downBaseY = event.getY();
     }
 
     public void actionUp() {
@@ -87,20 +96,50 @@ public class ParabolaView extends ImageView {
      * @param event
      */
     public void actionMove(MotionEvent event) {
-        y = event.getY();
-        x = event.getX();
         x = (x < mWidth / 4) ? mWidth / 4 : x;
         x = (x > 3 * mWidth / 4) ? mWidth * 3 / 4 : x;
-        deltaY = y - baseY;
-        if( deltaY < limitY ){
-        }else{
-            deltaY = limitY;
+        y = event.getY();
+        x = event.getX();
+        if (y - previousY > 0) {
+            /**方向向下*/
+            isDownOrUp = true;
         }
-        Logger.d("-----" + deltaY);
+        if (previousY - y > 0) {
+            /**方向向上,*/
+            isDownOrUp = false;
+        }
+        deltaY = y - downBaseY;
+
+        /**
+         * 设置两种状态 ，方向向下和向上，向下的时候deltaY大于400的时候一直400，
+         * 向上的时候
+         */
+        if (isDownOrUp) {
+            /**↓↓↓↓↓↓向下滑动的时候,deltaY变大*/
+            if (deltaY < limitY) {
+                /**deltaY < limitY*/
+            } else {
+                /**deltaY > limitY*/
+                deltaY = limitY;
+            }
+        } else {
+            /**↑↑↑↑↑↑向上滑动的时候，deltaY变小*/
+            Logger.d("deltaY--" + deltaY);
+            Logger.d("upBaseY--" + upBaseY);
+            Logger.d("y--" + y);
+//            deltaY = deltaY - (upBaseY - y);
+        }
+
+        paddingY = limitY - deltaY;
         path2.reset();
-        path2.moveTo(0, limitY - deltaY);// 设置Path的起点,跟listview配合，listview设置了ParabolaView的padding，需要跟随listview发生变化
-        path2.quadTo(x, limitY, mWidth, limitY - deltaY); // 设置贝塞尔曲线的控制点坐标和终点坐标
+        path2.moveTo(0, paddingY);// 设置Path的起点,跟listview配合，listview设置了ParabolaView的padding，需要跟随listview发生变化
+        path2.quadTo(x, limitY, mWidth, paddingY); // 设置贝塞尔曲线的控制点坐标和终点坐标
         invalidate();
+        //设置preY，检测手指向上还是向下滑动
+        previousY = event.getY();
+        if(!isDownOrUp){
+            upBaseY = y;
+        }
     }
 
     @Override

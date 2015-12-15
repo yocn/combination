@@ -16,20 +16,23 @@ import yocn.com.collection.view.BarChartView;
 
 public class SettingAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
-    ArrayList<SettingBean> mSettingBeanList = new ArrayList<>();
+    String[] strings = {};
 
     public SettingAdapter(Context context) {
         super();
         mInflater = LayoutInflater.from(context);
     }
 
-    public void setData(ArrayList<SettingBean> mSettingBeanList) {
-        this.mSettingBeanList = mSettingBeanList;
+    public void setData(String[] strings) {
+        this.strings = strings;
     }
 
     @Override
     public int getCount() {
-        return mSettingBeanList.size();
+        if (this.strings == null) {
+            return 0;
+        }
+        return strings.length;
     }
 
     @Override
@@ -53,7 +56,7 @@ public class SettingAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();//  取出ViewHolder对象
         }
-        holder.tv_setting.setText(mSettingBeanList.get(position).getTitle());
+        holder.tv_setting.setText(strings[position]);
         return convertView;
     }
 

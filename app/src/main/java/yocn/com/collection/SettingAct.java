@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import yocn.com.collection.adapter.SettingAdapter;
 import yocn.com.collection.bean.SettingBean;
+import yocn.com.collection.utils.Logger;
 
 public class SettingAct extends BaseActivity {
 
@@ -24,13 +25,8 @@ public class SettingAct extends BaseActivity {
         SettingAdapter adapter = new SettingAdapter(this);
         lv_setting.setAdapter(adapter);
 
-        SettingBean mSettingBean1 = new SettingBean("default");
-        SettingBean mSettingBean2 = new SettingBean("default");
-        ArrayList<SettingBean> mSettingBeanList = new ArrayList<>();
-        mSettingBeanList.add(mSettingBean1);
-        mSettingBeanList.add(mSettingBean2);
-
-        adapter.setData(mSettingBeanList);
+        String[] strings = {"default", "red", "material"};
+        adapter.setData(strings);
         adapter.notifyDataSetChanged();
 
         lv_setting.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -39,17 +35,22 @@ public class SettingAct extends BaseActivity {
                 switch (position) {
                     case 0:
                         Toast.makeText(SettingAct.this, "default", Toast.LENGTH_SHORT).show();
-                        setTheme(R.style.AppTheme);
-                        MainActivity.mMainActivity.setTheme(R.style.AppTheme);
+                        MainActivity.TYPE_THEME = MainActivity.TYPE_THEME_BASE;
                         MainActivity.mMainActivity.recreate();
                         break;
                     case 1:
                         Toast.makeText(SettingAct.this, "red", Toast.LENGTH_SHORT).show();
-                        setTheme(R.style.AppThemeRed);
-                        MainActivity.mMainActivity.setTheme(R.style.AppTheme);
+                        MainActivity.TYPE_THEME = MainActivity.TYPE_THEME_RED;
                         MainActivity.mMainActivity.recreate();
                         break;
-
+                    case 2:
+                        Toast.makeText(SettingAct.this, "material", Toast.LENGTH_SHORT).show();
+                        MainActivity.TYPE_THEME = MainActivity.TYPE_THEME_MATERIAL;
+                        MainActivity.mMainActivity.recreate();
+                        break;
+                    default:
+                        Logger.d("123456789");
+                        break;
                 }
             }
         });

@@ -52,12 +52,12 @@ public class Pull2RefreshList extends ListView {
         addHeaderView();
     }
 
-    public void setmOnFreshListener(OnFreshListener mOnFreshListener) {
+    public void setOnFreshListener(OnFreshListener mOnFreshListener) {
         this.mOnFreshListener = mOnFreshListener;
     }
 
     public interface OnFreshListener {
-        public void refresh();
+        void refresh();
     }
 
     /**
@@ -88,15 +88,20 @@ public class Pull2RefreshList extends ListView {
             case MotionEvent.ACTION_UP:
                 mHeaderView.setPadding(0, (-1 * mHeadViewHeight), 0, 0);
                 mParabolaView.actionUp();
+                if (isRefresh) {
+                    if (mOnFreshListener != null) {
+                        mOnFreshListener.refresh();
+                    }
+                }
                 break;
             case MotionEvent.ACTION_MOVE:
                 currentY = ev.getY();
                 deltaY = currentY - startY;
+                isRefresh = deltaY > 0 ? true : false;
+
                 if (deltaY >= mHeadViewHeight) {
                     deltaY = mHeadViewHeight;
                 }
-//                Logger.d("--delatY--)" + deltaY);
-//                Logger.d("--mHeadViewHeight--)" + mHeadViewHeight);
                 mHeaderView.setPadding(0, (int) (-1 * mHeadViewHeight + deltaY), 0, 0);
                 mParabolaView.actionMove(ev);
                 break;
