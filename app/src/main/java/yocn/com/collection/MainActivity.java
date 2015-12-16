@@ -9,25 +9,24 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import yocn.com.collection.adapter.MainAdapter;
+import yocn.com.collection.adapter.MainRecycleAdapter;
 import yocn.com.collection.bean.MainItemBean;
 import yocn.com.collection.utils.Logger;
 
 public class MainActivity extends BaseActivity {
-    RecyclerView rv_main;
-    ArrayList mMainItemBeanList = new ArrayList<MainItemBean>();
-    DrawerLayout drawer_layout;
+    private RecyclerView rv_main;
+    private ArrayList mMainItemBeanList = new ArrayList<MainItemBean>();
+    private DrawerLayout drawer_layout;
     //声明相关变量
     private Toolbar toolbar;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -35,9 +34,8 @@ public class MainActivity extends BaseActivity {
     private String[] lvs = {"Setting", "About Us"};
     private ArrayAdapter arrayAdapter;
     public static Activity mMainActivity;
-
-    MainAdapter mMainAdapter;
-    MainItemBean mMainItemBean;
+    private MainRecycleAdapter mMainAdapter;
+    private MainItemBean mMainItemBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +49,6 @@ public class MainActivity extends BaseActivity {
         initScrollView();
     }
 
-
-
     private void initView() {
         rv_main = (RecyclerView) findViewById(R.id.rv_main);
         lvLeftMenu = (ListView) findViewById(R.id.lv_left_menu);
@@ -62,7 +58,6 @@ public class MainActivity extends BaseActivity {
 
     private void initDrawerLayout() {
         toolbar.setTitle("Combition");
-        setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //创建返回键，并实现打开关/闭监听
@@ -98,7 +93,6 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initScrollView() {
-        Logger.d("initScrollView");
         String[] mTitles = new String[]{"RippleView", "ChartView", "BarChartView", "ParabolaView", "Path", "RecycleView"};
         Class[] mTarget = new Class[]{RippleViewActivity.class, ChartViewAct.class, BarChartViewAct.class, ParabolaViewAct.class, PathActivity.class, RecycleViewAct.class};
 
@@ -107,7 +101,7 @@ public class MainActivity extends BaseActivity {
             mMainItemBeanList.add(mMainItemBean);
         }
 
-        mMainAdapter = new MainAdapter(this, mMainItemBeanList);
+        mMainAdapter = new MainRecycleAdapter(this, mMainItemBeanList);
         rv_main.setLayoutManager(new LinearLayoutManager(this));
         // 设置ItemAnimator
         rv_main.setItemAnimator(new DefaultItemAnimator());
@@ -123,11 +117,24 @@ public class MainActivity extends BaseActivity {
                 case R.id.action_settings:
                     goSettingActivity();
                     break;
+                case android.R.id.home:
+                    goSettingActivity();
+                    Logger.d("123456789");
+                    break;
             }
             return true;
         }
     };
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // TODO Auto-generated method stub
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private void goSettingActivity() {
         Intent intent = new Intent(this, SettingAct.class);

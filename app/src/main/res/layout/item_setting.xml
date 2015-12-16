@@ -3,15 +3,25 @@
     android:layout_height="match_parent"
     android:background="#ffffff">
 
+    <View
+        android:id="@+id/view"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:background="?attr/colorPrimary" />
+
     <TextView
         android:id="@+id/tv_setting"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
-        android:textColor="@color/black"
-        android:gravity="center_vertical"
-        android:layout_marginLeft="10dp"
-        android:textSize="20sp"
         android:layout_centerVertical="true"
-        android:text="1234567/9" />
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/view"
+        android:gravity="center_vertical"
+        android:text="1234567/9"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
 </RelativeLayout>

@@ -1,23 +1,46 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<yocn.com.collection.view.SlideRightOutView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:id="@+id/slideRightOutView"
+    tools:context="yocn.com.collection.RippleViewActivity"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:background="#d2d2d2"
-    tools:context="com.indris.sample.RippleViewActivity">
+    android:fitsSystemWindows="true">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
+    <RelativeLayout
+        android:id="@string/main_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/black">
 
-    <yocn.com.collection.view.RippleView
-        android:id="@+id/btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:background="@drawable/card_bk"
-        android:gravity="center"
-        android:padding="55dp"
-        android:text="Click!Click!Click!"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="-10.0dip"
+            android:background="@drawable/shadow_bg" />
 
-</RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/main_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar" />
+
+            <yocn.com.collection.view.RippleView
+                android:id="@+id/btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/card_bk"
+                android:gravity="center"
+                android:padding="55dp"
+                android:text="Click!Click!Click!"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</yocn.com.collection.view.SlideRightOutView>

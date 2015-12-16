@@ -11,7 +11,7 @@ import android.view.WindowManager;
 
 import yocn.com.collection.utils.SystemBarTintManager;
 
-public class RecycleViewAct extends BaseActivity {
+public class RecycleViewAct extends SildeDoneBaseActivity {
 
     @SuppressLint("NewApi")
     @Override

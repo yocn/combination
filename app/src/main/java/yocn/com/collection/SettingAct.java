@@ -1,7 +1,6 @@
 package yocn.com.collection;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,10 +10,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import yocn.com.collection.adapter.SettingAdapter;
-import yocn.com.collection.bean.SettingBean;
+import yocn.com.collection.bean.SettingThemeBean;
 import yocn.com.collection.utils.Logger;
 
-public class SettingAct extends BaseActivity {
+public class SettingAct extends SildeDoneBaseActivity {
+
+    private ArrayList<SettingThemeBean> mSettingThemeBeanList = new ArrayList<SettingThemeBean>();
 
     @SuppressLint("NewApi")
     @Override
@@ -26,8 +27,13 @@ public class SettingAct extends BaseActivity {
         SettingAdapter adapter = new SettingAdapter(this);
         lv_setting.setAdapter(adapter);
 
-        String[] strings = {"default", "red", "material"};
-        adapter.setData(strings);
+        String[] strings = {"blue theme", "red theme", "material theme"};
+        int[] ints = {R.color.blue_theme, R.color.red_theme, R.color.material_theme};
+        for (int i = 0; i < strings.length; i++) {
+            SettingThemeBean mSettingThemeBean = new SettingThemeBean(strings[i], ints[i]);
+            mSettingThemeBeanList.add(mSettingThemeBean);
+        }
+        adapter.setData(mSettingThemeBeanList);
         adapter.notifyDataSetChanged();
 
         lv_setting.setOnItemClickListener(new AdapterView.OnItemClickListener() {

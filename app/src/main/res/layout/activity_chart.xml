@@ -1,24 +1,45 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<yocn.com.collection.view.SlideRightOutView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/slideRightOutView"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@color/white">
-
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
+    android:layout_height="fill_parent">
 
     <RelativeLayout
-        android:id="@+id/ll_full"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/toolbar">
+        android:id="@string/main_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/black">
 
-        <yocn.com.collection.view.ChartView
-            android:id="@+id/cv_chart"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"></yocn.com.collection.view.ChartView>
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="-10.0dip"
+            android:background="@drawable/shadow_bg" />
+
+        <RelativeLayout
+            android:id="@+id/main_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar" />
+
+            <RelativeLayout
+                android:id="@+id/ll_full"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/toolbar">
+
+                <yocn.com.collection.view.ChartView
+                    android:id="@+id/cv_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"></yocn.com.collection.view.ChartView>
+            </RelativeLayout>
+
+        </RelativeLayout>
     </RelativeLayout>
 
-</RelativeLayout>
+</yocn.com.collection.view.SlideRightOutView>

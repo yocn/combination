@@ -15,7 +15,7 @@ import java.util.Random;
 import yocn.com.collection.utils.ChartBean;
 import yocn.com.collection.view.ChartView;
 
-public class ChartViewAct extends BaseActivity implements OnClickListener {
+public class ChartViewAct extends SildeDoneBaseActivity implements OnClickListener {
     private RelativeLayout ll_full;
     private ChartView cv_chart;
     private Button bt_change;

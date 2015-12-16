@@ -3,7 +3,7 @@ package yocn.com.collection;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class RippleViewActivity extends Activity {
+public class RippleViewActivity extends SildeDoneBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

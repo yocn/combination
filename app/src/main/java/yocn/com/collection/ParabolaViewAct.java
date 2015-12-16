@@ -6,7 +6,7 @@ import yocn.com.collection.adapter.BarChartAdapter;
 import yocn.com.collection.view.ParabolaView;
 import yocn.com.collection.view.Pull2RefreshList;
 
-public class ParabolaViewAct extends BaseActivity implements Pull2RefreshList.OnFreshListener {
+public class ParabolaViewAct extends SildeDoneBaseActivity implements Pull2RefreshList.OnFreshListener {
     Pull2RefreshList lv_chart;
     ParabolaView parabolaView;
     BarChartAdapter adapter;

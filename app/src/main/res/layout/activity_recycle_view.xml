@@ -1,17 +1,38 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<yocn.com.collection.view.SlideRightOutView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/slideRightOutView"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fitsSystemWindows="true">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
-
-    <yocn.com.collection.view.ParabolaView
-        android:id="@+id/para"
-        android:layout_below="@id/toolbar"
+    <RelativeLayout
+        android:id="@string/main_content"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="fill_parent"
+        android:background="@color/black">
 
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="-10.0dip"
+            android:background="@drawable/shadow_bg" />
 
-</RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/main_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar" />
+
+            <yocn.com.collection.view.ParabolaView
+                android:id="@+id/para"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@id/toolbar" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</yocn.com.collection.view.SlideRightOutView>

@@ -8,31 +8,26 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import yocn.com.collection.R;
-import yocn.com.collection.bean.SettingBean;
-import yocn.com.collection.view.BarChartView;
+import yocn.com.collection.bean.SettingThemeBean;
 
 public class SettingAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
-    String[] strings = {};
+    private ArrayList<SettingThemeBean> mSettingThemeBeanList = new ArrayList<SettingThemeBean>();
 
     public SettingAdapter(Context context) {
         super();
         mInflater = LayoutInflater.from(context);
     }
 
-    public void setData(String[] strings) {
-        this.strings = strings;
+    public void setData(ArrayList<SettingThemeBean> mSettingThemeBeanList) {
+        this.mSettingThemeBeanList = mSettingThemeBeanList;
     }
 
     @Override
     public int getCount() {
-        if (this.strings == null) {
-            return 0;
-        }
-        return strings.length;
+        return mSettingThemeBeanList.size();
     }
 
     @Override
@@ -52,15 +47,18 @@ public class SettingAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.item_setting, null);
             holder = new ViewHolder();
             holder.tv_setting = (TextView) convertView.findViewById(R.id.tv_setting);
+            holder.view = (View) convertView.findViewById(R.id.view);
             convertView.setTag(holder);// 绑定ViewHolder对象
         } else {
             holder = (ViewHolder) convertView.getTag();//  取出ViewHolder对象
         }
-        holder.tv_setting.setText(strings[position]);
+        holder.tv_setting.setText(mSettingThemeBeanList.get(position).getTitle());
+        holder.view.setBackgroundResource(mSettingThemeBeanList.get(position).getColor());
         return convertView;
     }
 
     public final class ViewHolder {
         public TextView tv_setting;
+        public View view;
     }
 }

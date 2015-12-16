@@ -3,11 +3,13 @@ package yocn.com.collection.bean;
 /**
  * Created by JD on 2015/12/11 0011.
  */
-public class SettingBean {
+public class SettingThemeBean {
     private String title;
+    private int color;
 
-    public SettingBean(String title) {
+    public SettingThemeBean(String title, int color) {
         this.title = title;
+        this.color = color;
     }
 
     public String getTitle() {
@@ -18,11 +20,19 @@ public class SettingBean {
         this.title = title;
     }
 
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
+    }
 
     @Override
     public String toString() {
-        return "SettingBean{" +
+        return "SettingThemeBean{" +
                 "title='" + title + '\'' +
+                ", color=" + color +
                 '}';
     }
 }

@@ -1,31 +1,52 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<yocn.com.collection.view.SlideRightOutView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/slideRightOutView"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fitsSystemWindows="true">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
+    <RelativeLayout
+        android:id="@string/main_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/black">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/toolbar">
-
-        <yocn.com.collection.view.ParabolaView
-            android:id="@+id/para"
+        <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" />
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="-10.0dip"
+            android:background="@drawable/shadow_bg" />
 
-        <yocn.com.collection.view.Pull2RefreshList
-            android:id="@+id/lv_chart"
+        <RelativeLayout
+            android:id="@+id/main_layout"
             android:layout_width="fill_parent"
-            android:background="#ffffff"
-            android:divider="#888888"
-            android:overScrollMode="never"
-            android:dividerHeight="1px"
-            android:layout_height="fill_parent" />
-    </FrameLayout>
+            android:layout_height="fill_parent">
 
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar" />
 
-</RelativeLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/toolbar">
+
+                <yocn.com.collection.view.ParabolaView
+                    android:id="@+id/para"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" />
+
+                <yocn.com.collection.view.Pull2RefreshList
+                    android:id="@+id/lv_chart"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="#ffffff"
+                    android:divider="#888888"
+                    android:dividerHeight="1px"
+                    android:overScrollMode="never" />
+            </FrameLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</yocn.com.collection.view.SlideRightOutView>

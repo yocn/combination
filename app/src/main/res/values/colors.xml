@@ -67,6 +67,10 @@
     <color name="error_view_retry_button_background_stroke">#50000000</color>
     <color name="app_theme_accent">#FF4081</color>
 
+    <color name="red_theme">#ff4444</color>
+    <color name="blue_theme">#1b9dff</color>
+    <color name="material_theme">#ff009688</color>
+
     <color name="select_item_text_color1">#333333</color>
     <color name="select_top_cutline_color">#cccccc</color>
     <color name="select_top_bar_text_color">#666666</color>
