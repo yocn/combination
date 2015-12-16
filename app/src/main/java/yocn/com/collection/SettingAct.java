@@ -1,6 +1,7 @@
 package yocn.com.collection;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -35,18 +36,21 @@ public class SettingAct extends BaseActivity {
                 switch (position) {
                     case 0:
                         Toast.makeText(SettingAct.this, "default", Toast.LENGTH_SHORT).show();
-                        MainActivity.TYPE_THEME = MainActivity.TYPE_THEME_BASE;
+                        MainActivity.TYPE_THEME = BaseActivity.TYPE_THEME_BASE;
                         MainActivity.mMainActivity.recreate();
+                        SettingAct.this.recreate();
                         break;
                     case 1:
                         Toast.makeText(SettingAct.this, "red", Toast.LENGTH_SHORT).show();
-                        MainActivity.TYPE_THEME = MainActivity.TYPE_THEME_RED;
+                        MainActivity.TYPE_THEME = BaseActivity.TYPE_THEME_RED;
                         MainActivity.mMainActivity.recreate();
+                        SettingAct.this.recreate();
                         break;
                     case 2:
                         Toast.makeText(SettingAct.this, "material", Toast.LENGTH_SHORT).show();
-                        MainActivity.TYPE_THEME = MainActivity.TYPE_THEME_MATERIAL;
+                        MainActivity.TYPE_THEME = BaseActivity.TYPE_THEME_MATERIAL;
                         MainActivity.mMainActivity.recreate();
+                        SettingAct.this.recreate();
                         break;
                     default:
                         Logger.d("123456789");

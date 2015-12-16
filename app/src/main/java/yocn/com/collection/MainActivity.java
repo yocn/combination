@@ -35,10 +35,7 @@ public class MainActivity extends BaseActivity {
     private String[] lvs = {"Setting", "About Us"};
     private ArrayAdapter arrayAdapter;
     public static Activity mMainActivity;
-    public static int TYPE_THEME = 1000;
-    public static final int TYPE_THEME_BASE = 1000;
-    public static final int TYPE_THEME_RED = 1001;
-    public static final int TYPE_THEME_MATERIAL = 1002;
+
     MainAdapter mMainAdapter;
     MainItemBean mMainItemBean;
 
@@ -46,12 +43,15 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mMainActivity = this;
-        setTheme();
-        setContentView(getLayoutInflater().inflate(R.layout.activity_main, null));
+        View view = getLayoutInflater().inflate(R.layout.activity_main, null);
+
+        setContentView(view);
         initView();
         initDrawerLayout();
         initScrollView();
     }
+
+
 
     private void initView() {
         rv_main = (RecyclerView) findViewById(R.id.rv_main);
@@ -128,19 +128,6 @@ public class MainActivity extends BaseActivity {
         }
     };
 
-    private void setTheme() {
-        switch (TYPE_THEME) {
-            case TYPE_THEME_BASE:
-                setTheme(R.style.AppTheme);
-                break;
-            case TYPE_THEME_RED:
-                setTheme(R.style.AppThemeRed);
-                break;
-            case TYPE_THEME_MATERIAL:
-                setTheme(R.style.AppThemeMaterial);
-                break;
-        }
-    }
 
     private void goSettingActivity() {
         Intent intent = new Intent(this, SettingAct.class);

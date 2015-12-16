@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.LayoutRes;
+import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -19,11 +20,21 @@ import yocn.com.collection.utils.SystemBarTintManager;
  */
 public class BaseActivity extends ActionBarActivity {
     Toolbar toolbar;
-    private int[] styles = {R.style.AppTheme, R.style.AppThemeRed};
+    public static int[] styles = {R.style.AppTheme, R.style.AppThemeRed, R.style.AppThemeMaterial};
+    public static int TYPE_THEME = 0;
+    public static final int TYPE_THEME_BASE = 0;
+    public static final int TYPE_THEME_RED = 1;
+    public static final int TYPE_THEME_MATERIAL = 2;
 
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        setTheme(BaseActivity.styles[BaseActivity.TYPE_THEME]);
+        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -36,9 +47,9 @@ public class BaseActivity extends ActionBarActivity {
         toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         addActivity2List(this);
-        setTheme(styles[MyApplication.styleIndex]);
         super.setContentView(view);
     }
+
 
     @Override
     protected void onDestroy() {

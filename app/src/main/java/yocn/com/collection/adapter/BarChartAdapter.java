@@ -46,7 +46,7 @@ public class BarChartAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();//  取出ViewHolder对象
         }
-        holder.bcv.setColor(Math.abs(new Random().nextInt(255)));
+        holder.bcv.setColor(Math.abs(new Random().nextInt(500)));
         return convertView;
     }
 
