@@ -9,7 +9,9 @@
         android:icon="@drawable/icon"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".WelcomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Base"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,8 +20,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Base"
+            android:label="@string/app_name"/>
+        <activity
             android:name=".BaseActivity"
-            android:theme="@style/Transparent"
             android:label="@string/app_name"/>
         <activity
             android:name=".ChartViewAct"

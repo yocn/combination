@@ -2,11 +2,10 @@
 <yocn.com.collection.view.SlideRightOutView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/slideRightOutView"
-    tools:context="yocn.com.collection.RippleViewActivity"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#d2d2d2"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    tools:context="yocn.com.collection.RippleViewActivity">
 
     <RelativeLayout
         android:id="@string/main_content"
@@ -23,7 +22,8 @@
         <RelativeLayout
             android:id="@+id/main_layout"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent"
+            android:background="@color/grey">
 
             <include
                 android:id="@+id/toolbar"

@@ -42,7 +42,6 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         mMainActivity = this;
         View view = getLayoutInflater().inflate(R.layout.activity_main, null);
-
         setContentView(view);
         initView();
         initDrawerLayout();

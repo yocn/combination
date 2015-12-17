@@ -19,7 +19,8 @@
         <RelativeLayout
             android:id="@+id/main_layout"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent"
+            android:background="@color/grey">
 
             <include
                 android:id="@+id/toolbar"

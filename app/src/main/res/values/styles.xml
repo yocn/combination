@@ -14,14 +14,15 @@
     </style>
 
     <style name="AppTheme.Base" parent="Theme.AppCompat">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <!--<item name="android:windowAnimationStyle">@style/Animation</item>-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <!-- Actionbar color -->
         <item name="colorPrimary">@color/blue_theme</item>
         <!--Status bar color-->
         <item name="colorPrimaryDark">@color/blue_theme</item>
-        <!--Window color-->
-        <item name="android:windowBackground">@color/dim_foreground_material_dark</item>
         <!--返回键样式-->
         <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowToggle</item>
 
@@ -43,10 +44,10 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
-    <style name="Transparent" parent="@android:style/Theme">
+    <style name="Transparent" parent="AppTheme.Base">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsTranslucent">true</item>
-
+        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
     </style>
 </resources>
