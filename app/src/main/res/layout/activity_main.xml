@@ -13,23 +13,24 @@
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_main"
-                android:background="#ffffff"
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="50dp" />
+                android:layout_marginTop="50dp"
+                android:background="?dark_text_color" />
         </LinearLayout>
         <!--侧滑菜单-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            android:background="?attr/colorPrimary">
+            android:background="?attr/colorPrimary"
+            android:orientation="vertical">
 
             <ListView
                 android:id="@+id/lv_left_menu"
-                android:layout_marginTop="50dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="50dp"
                 android:divider="@null"
                 android:text="DrawerLayout" />
         </LinearLayout>

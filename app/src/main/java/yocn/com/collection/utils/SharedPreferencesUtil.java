@@ -12,11 +12,11 @@ public class SharedPreferencesUtil {
     private static SharedPreferencesUtil instance;
     private SharedPreferences sp;
     private Editor editor;
-    private static final String name = "duole_setting_data";
+    private static final String name = "setting_data";
     private static final int mode = Context.MODE_PRIVATE;
 
     /**
-     * 这个构造函数默认名为"duole_setting_data"
+     * 这个构造函数默认名为"setting_data"
      *
      * @param context
      */

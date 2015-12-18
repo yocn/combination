@@ -1,6 +1,5 @@
 package yocn.com.collection;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -13,34 +12,35 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import yocn.com.collection.adapter.MainAdapter;
+import yocn.com.collection.adapter.DrawerSettingAdapter;
 import yocn.com.collection.adapter.MainRecycleAdapter;
+import yocn.com.collection.bean.DrawerSettingBean;
 import yocn.com.collection.bean.MainItemBean;
 import yocn.com.collection.utils.Logger;
 
 public class MainActivity extends BaseActivity {
     private RecyclerView rv_main;
-    private ArrayList mMainItemBeanList = new ArrayList<MainItemBean>();
+    private ArrayList<MainItemBean> mMainItemBeanList = new ArrayList<MainItemBean>();
+    private ArrayList<DrawerSettingBean> mDrawerSettingBeanList = new ArrayList<DrawerSettingBean>();
     private DrawerLayout drawer_layout;
-    //声明相关变量
     private Toolbar toolbar;
     private ActionBarDrawerToggle mDrawerToggle;
-    private ListView lvLeftMenu;
-    private String[] lvs = {"Setting", "About Us"};
-    private ArrayAdapter arrayAdapter;
-    public static Activity mMainActivity;
+    private ListView lv_drawer;
+    private String[] drawerStrings = {"DarkMode", "Setting", "About Us"};
     private MainRecycleAdapter mMainAdapter;
     private MainItemBean mMainItemBean;
+    private DrawerSettingAdapter mDrawerSettingAdapter;
+    private DrawerSettingBean mDrawerSettingBean;
+    public static MainActivity mMainActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mMainActivity = this;
+        mMainActivity = MainActivity.this;
         View view = getLayoutInflater().inflate(R.layout.activity_main, null);
         setContentView(view);
         initView();
@@ -50,13 +50,13 @@ public class MainActivity extends BaseActivity {
 
     private void initView() {
         rv_main = (RecyclerView) findViewById(R.id.rv_main);
-        lvLeftMenu = (ListView) findViewById(R.id.lv_left_menu);
+        lv_drawer = (ListView) findViewById(R.id.lv_left_menu);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout);
     }
 
     private void initDrawerLayout() {
-        toolbar.setTitle("Combition");
+        toolbar.setTitle(getResources().getString(R.string.app_name));
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //创建返回键，并实现打开关/闭监听
@@ -74,9 +74,14 @@ public class MainActivity extends BaseActivity {
         mDrawerToggle.syncState();
         drawer_layout.setDrawerListener(mDrawerToggle);
         //设置菜单列表
-        arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, lvs);
-        lvLeftMenu.setAdapter(arrayAdapter);
-        lvLeftMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mDrawerSettingAdapter = new DrawerSettingAdapter(this);
+        for (int i = 0; i < drawerStrings.length; i++) {
+            mDrawerSettingBean = new DrawerSettingBean(drawerStrings[i]);
+            mDrawerSettingBeanList.add(mDrawerSettingBean);
+        }
+        mDrawerSettingAdapter.setData(mDrawerSettingBeanList);
+        lv_drawer.setAdapter(mDrawerSettingAdapter);
+        lv_drawer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {

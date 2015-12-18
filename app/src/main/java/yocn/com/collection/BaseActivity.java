@@ -15,6 +15,7 @@ import android.view.WindowManager;
 
 import yocn.com.collection.application.MyApplication;
 import yocn.com.collection.utils.Logger;
+import yocn.com.collection.utils.SharedPreferencesUtil;
 import yocn.com.collection.utils.SystemBarTintManager;
 import yocn.com.collection.view.SlideRightOutView;
 
@@ -22,12 +23,16 @@ import yocn.com.collection.view.SlideRightOutView;
  * Created by Yocn on 2015/12/2 0002.
  */
 public class BaseActivity extends ActionBarActivity {
-    Toolbar toolbar;
-    public static int[] styles = {R.style.AppTheme, R.style.AppThemeRed, R.style.AppThemeMaterial};
+    private Toolbar toolbar;
+    private SharedPreferencesUtil util;
+    public static int[] styles = {R.style.AppTheme, R.style.AppThemeRed, R.style.AppThemeMaterial, R.style.DarkMode};
     public static int TYPE_THEME = 0;
+    public static int TYPE_THEME_NORMAL = 0;
     public static final int TYPE_THEME_BASE = 0;
     public static final int TYPE_THEME_RED = 1;
     public static final int TYPE_THEME_MATERIAL = 2;
+    public static final int TYPE_THEME_DARK = 3;
+
     public static int TYPE_MAIN_STYLE = 0;
     public static final int TYPE_MAIN_HARI = 0;
     public static final int TYPE_MAIN_SQUARE = 1;
@@ -39,7 +44,8 @@ public class BaseActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        setTheme(BaseActivity.styles[BaseActivity.TYPE_THEME]);
+        util = SharedPreferencesUtil.getInstance(this);
+        setTheme();
         super.onCreate(savedInstanceState);
     }
 
@@ -54,6 +60,14 @@ public class BaseActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
         addActivity2List(this);
         super.setContentView(view);
+    }
+
+    public void setTheme() {
+        util.saveInt("theme", BaseActivity.TYPE_THEME);
+        if (TYPE_THEME != TYPE_THEME_DARK) {
+            TYPE_THEME_NORMAL = BaseActivity.TYPE_THEME;
+        }
+        setTheme(BaseActivity.styles[BaseActivity.TYPE_THEME]);
     }
 
     @Override
