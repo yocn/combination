@@ -14,23 +14,22 @@
     </style>
 
     <style name="AppTheme.Base" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/blue_theme</item>
+        <!--Status bar color-->
+        <item name="colorPrimaryDark">@color/blue_theme</item>
         <item name="dark_text_color">@color/white</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>
         <!--<item name="android:windowAnimationStyle">@style/Animation</item>-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <!-- Actionbar color -->
-        <item name="colorPrimary">@color/blue_theme</item>
-        <!--Status bar color-->
-        <item name="colorPrimaryDark">@color/blue_theme</item>
         <!--返回键样式-->
         <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowToggle</item>
     </style>
 
     <style name="DarkMode" parent="AppTheme.Base">
-        <item name="dark_text_color">@color/grey_top_light_text</item>
         <item name="colorPrimary">@color/dark_theme</item>
+        <item name="dark_text_color">@color/grey_top_light_text</item>
         <item name="colorPrimaryDark">@color/dark_theme</item>
     </style>
 

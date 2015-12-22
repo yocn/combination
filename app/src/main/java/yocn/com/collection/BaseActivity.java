@@ -1,6 +1,7 @@
 package yocn.com.collection;
 
 import android.app.Activity;
+import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -8,6 +9,7 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -36,6 +38,8 @@ public class BaseActivity extends ActionBarActivity {
     public static int TYPE_MAIN_STYLE = 0;
     public static final int TYPE_MAIN_HARI = 0;
     public static final int TYPE_MAIN_SQUARE = 1;
+
+    public static int color = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
@@ -67,7 +71,20 @@ public class BaseActivity extends ActionBarActivity {
         if (TYPE_THEME != TYPE_THEME_DARK) {
             TYPE_THEME_NORMAL = BaseActivity.TYPE_THEME;
         }
+        getColor();
         setTheme(BaseActivity.styles[BaseActivity.TYPE_THEME]);
+    }
+
+    private void getColor() {
+        TypedValue typedValue = new TypedValue();
+        this.getTheme().resolveAttribute(BaseActivity.styles[BaseActivity.TYPE_THEME], typedValue, true);
+        int[] attribute = new int[]{android.R.attr.colorPrimary};
+        TypedArray array = this.obtainStyledAttributes(typedValue.resourceId, attribute);
+//        int textSize = array.getDimensionPixelSize(0 /* index */, -1 /* default size */);
+        color = array.getColor(0, getResources().getColor(R.color.blue_theme));
+
+        Logger.d("color--" + color);
+        array.recycle();
     }
 
     @Override

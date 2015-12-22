@@ -21,9 +21,10 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
+import yocn.com.collection.BaseActivity;
 import yocn.com.collection.R;
 import yocn.com.collection.utils.ChartBean;
-
+import yocn.com.collection.utils.Logger;
 
 public class ChartView extends ImageView {
 
@@ -33,6 +34,7 @@ public class ChartView extends ImageView {
 
     public static int height = 300;
     public static double width = 600;
+
     private int heightReal;// 图表实际的高度
     private int heightText = 70;// 底部显示时间的区域
     private int heightTop = 0;// 图表上面的空白区
@@ -87,25 +89,32 @@ public class ChartView extends ImageView {
     private float right;
     private float bottom;
     private int textWidth;
+    private Context context;
+    private int color;
 
     public ChartView(Context context) {
         super(context);
-        init();
+        init(context);
     }
 
     public ChartView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init();
+        init(context);
     }
 
     public ChartView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
+        init(context);
     }
 
-    private void init() {
+    private void init(Context context) {
+        this.context = context;
         handler = new MyHandler();
-
+        if (BaseActivity.color != 0) {
+            this.color = BaseActivity.color;
+        }else{
+            this.color = getResources().getColor(R.color.blue_theme);
+        }
     }
 
     public void setData(List<ChartBean> list, String unit, boolean hasAnim) {
@@ -168,6 +177,7 @@ public class ChartView extends ImageView {
         canvas.drawText(String.format("%.2f", (min + (max - min) / 3)), widthText - 35 * multi, heightTop + heightReal
                 * 2 / 3, p);
         canvas.drawText(unit, widthText - 35 * multi - 5, heightTop + heightReal + 5, p);
+
         /** 画底下的日期文字 */
         try {
             switch (mChartBeanList.size()) {
@@ -230,7 +240,8 @@ public class ChartView extends ImageView {
         path.lineTo(width, heightTop);
         canvas.drawPath(path, p);
         p.setStyle(Paint.Style.FILL);
-        p.setColor(getResources().getColor(R.color.green_chart));
+
+        p.setColor(color);
         p.setStrokeWidth(3 * multi);
         /** 几个点连起来的折线 */
         try {
@@ -299,16 +310,16 @@ public class ChartView extends ImageView {
         /** 画圆角矩形 */
         if (pic != null) {
             // p = new Paint();
-            p.setAntiAlias(true);//  设置画笔的锯齿效果
+            p.setAntiAlias(true);// 设置画笔的锯齿效果
             p.setPathEffect(new PathEffect());
-            p.setColor(getResources().getColor(R.color.green_chart_dark));
+            p.setColor(color);
             textWidth = getTextWidth(p, String.format("%.2f", price));
             left = pic.x - textWidth / 2;
             top = pic.y - 35 * multi;
             right = pic.x + textWidth / 2 + 5;
             bottom = pic.y - 15 * multi;
-            RectF oval3 = new RectF(left, top, right, bottom);// ���ø��µĳ�����
-            canvas.drawRoundRect(oval3, 10, 10, p);// �ڶ���������x�뾶��������������y�뾶
+            RectF oval3 = new RectF(left, top, right, bottom);// 设置个新的长方形
+            canvas.drawRoundRect(oval3, 10, 10, p);// 第二个参数是x半径，第三个参数是y半径
             path.moveTo(pic.x, pic.y - 5 * multi);
             path.lineTo((left + right) / 2 - 5 * multi, bottom);
             path.lineTo((left + right) / 2 + 5 * multi, bottom);
@@ -381,7 +392,7 @@ public class ChartView extends ImageView {
 
     /**
      * 根据传入的价格得到需要展示在view中的Y坐标
-     *
+     * <p>
      * max：最大值 min:最小值 height：图表的高度
      *
      * @param x
