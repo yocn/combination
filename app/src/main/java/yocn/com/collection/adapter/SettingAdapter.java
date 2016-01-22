@@ -53,7 +53,7 @@ public class SettingAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();//  取出ViewHolder对象
         }
         holder.tv_setting.setText(mSettingThemeBeanList.get(position).getTitle());
-        holder.view.setBackgroundResource(mSettingThemeBeanList.get(position).getColor());
+//        holder.view.setBackgroundResource(mSettingThemeBeanList.get(position).getColor());
         return convertView;
     }
 

@@ -27,10 +27,10 @@ public class SettingAct extends SildeDoneBaseActivity {
         SettingAdapter adapter = new SettingAdapter(this);
         lv_setting.setAdapter(adapter);
 
-        String[] strings = {"blue theme", "red theme", "material theme"};
-        int[] ints = {R.color.blue_theme, R.color.red_theme, R.color.material_theme};
+//        String[] strings = {"blue theme", "red theme", "material theme"};
+//        int[] ints = {R.color.blue_theme, R.color.red_theme, R.color.material_theme};
         for (int i = 0; i < strings.length; i++) {
-            SettingThemeBean mSettingThemeBean = new SettingThemeBean(strings[i], ints[i]);
+            SettingThemeBean mSettingThemeBean = new SettingThemeBean(strings[i], styles[i]);
             mSettingThemeBeanList.add(mSettingThemeBean);
         }
         adapter.setData(mSettingThemeBeanList);
@@ -39,29 +39,34 @@ public class SettingAct extends SildeDoneBaseActivity {
         lv_setting.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-                    case 0:
-                        Toast.makeText(SettingAct.this, "default", Toast.LENGTH_SHORT).show();
-                        MainActivity.TYPE_THEME = BaseActivity.TYPE_THEME_BASE;
-                        MainActivity.mMainActivity.recreate();
-                        SettingAct.this.recreate();
-                        break;
-                    case 1:
-                        Toast.makeText(SettingAct.this, "red", Toast.LENGTH_SHORT).show();
-                        MainActivity.TYPE_THEME = BaseActivity.TYPE_THEME_RED;
-                        MainActivity.mMainActivity.recreate();
-                        SettingAct.this.recreate();
-                        break;
-                    case 2:
-                        Toast.makeText(SettingAct.this, "material", Toast.LENGTH_SHORT).show();
-                        MainActivity.TYPE_THEME = BaseActivity.TYPE_THEME_MATERIAL;
-                        MainActivity.mMainActivity.recreate();
-                        SettingAct.this.recreate();
-                        break;
-                    default:
-                        Logger.d("123456789");
-                        break;
-                }
+                Toast.makeText(SettingAct.this, strings[position], Toast.LENGTH_SHORT).show();
+                MainActivity.TYPE_THEME = position;
+                MainActivity.mMainActivity.recreate();
+                SettingAct.this.recreate();
+
+//                switch (position) {
+//                    case 0:
+//                        Toast.makeText(SettingAct.this, "default", Toast.LENGTH_SHORT).show();
+//                        MainActivity.TYPE_THEME = BaseActivity.TYPE_THEME_BASE;
+//                        MainActivity.mMainActivity.recreate();
+//                        SettingAct.this.recreate();
+//                        break;
+//                    case 1:
+//                        Toast.makeText(SettingAct.this, "red", Toast.LENGTH_SHORT).show();
+//                        MainActivity.TYPE_THEME = BaseActivity.TYPE_THEME_RED;
+//                        MainActivity.mMainActivity.recreate();
+//                        SettingAct.this.recreate();
+//                        break;
+//                    case 2:
+//                        Toast.makeText(SettingAct.this, "material", Toast.LENGTH_SHORT).show();
+//                        MainActivity.TYPE_THEME = BaseActivity.TYPE_THEME_MATERIAL;
+//                        MainActivity.mMainActivity.recreate();
+//                        SettingAct.this.recreate();
+//                        break;
+//                    default:
+//                        Logger.d("123456789");
+//                        break;
+//                }
             }
         });
     }

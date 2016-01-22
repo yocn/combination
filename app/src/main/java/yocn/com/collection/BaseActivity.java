@@ -1,6 +1,7 @@
 package yocn.com.collection;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,10 +11,13 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import yocn.com.collection.application.MyApplication;
 import yocn.com.collection.utils.Logger;
@@ -27,13 +31,15 @@ import yocn.com.collection.view.SlideRightOutView;
 public class BaseActivity extends ActionBarActivity {
     private Toolbar toolbar;
     private SharedPreferencesUtil util;
-    public static int[] styles = {R.style.AppTheme, R.style.AppThemeRed, R.style.AppThemeMaterial, R.style.DarkMode};
+    public static int[] styles = {R.style.AppTheme, R.style.AppThemeRed, R.style.AppThemeMaterial, R.style.DarkMode, R.style.AppThemeTrans};
+    public static String[] strings = {"blue theme", "red theme", "material theme", "dark mode", "trans mode"};
     public static int TYPE_THEME = 0;
     public static int TYPE_THEME_NORMAL = 0;
     public static final int TYPE_THEME_BASE = 0;
     public static final int TYPE_THEME_RED = 1;
     public static final int TYPE_THEME_MATERIAL = 2;
     public static final int TYPE_THEME_DARK = 3;
+    public static final int TYPE_THEME_TRANS = 4;
 
     public static int TYPE_MAIN_STYLE = 0;
     public static final int TYPE_MAIN_HARI = 0;
@@ -72,20 +78,33 @@ public class BaseActivity extends ActionBarActivity {
             TYPE_THEME_NORMAL = BaseActivity.TYPE_THEME;
         }
         getColor();
+        System.out.println(BaseActivity.TYPE_THEME);
         setTheme(BaseActivity.styles[BaseActivity.TYPE_THEME]);
     }
 
     private void getColor() {
-        TypedValue typedValue = new TypedValue();
-        this.getTheme().resolveAttribute(BaseActivity.styles[BaseActivity.TYPE_THEME], typedValue, true);
-        int[] attribute = new int[]{android.R.attr.colorPrimary};
-        TypedArray array = this.obtainStyledAttributes(typedValue.resourceId, attribute);
-//        int textSize = array.getDimensionPixelSize(0 /* index */, -1 /* default size */);
-        color = array.getColor(0, getResources().getColor(R.color.blue_theme));
+//        TypedValue typedValue = new TypedValue();
+//        this.getTheme().resolveAttribute(BaseActivity.styles[BaseActivity.TYPE_THEME], typedValue, true);
+//        int[] attribute = new int[]{android.R.attr.colorPrimary};
+//        TypedArray array = this.obtainStyledAttributes(typedValue.resourceId, attribute);
+//        color = array.getColor(0, getResources().getColor(R.color.blue_theme));
+//
+//        Logger.d("color--" + color);
+//        array.recycle();
 
+        TextView s = new TextView(this);
+        s.setText(R.string.common_android_wear_update_text);
+        TypedArray array = getTheme().obtainStyledAttributes(new int[]{
+                android.R.attr.colorPrimary,
+                android.R.attr.colorPrimaryDark,
+        });
+
+        color = array.getColor(0, getResources().getColor(R.color.blue_theme));
+        int textColor = array.getColor(1, 0xFF00FF);
         Logger.d("color--" + color);
         array.recycle();
     }
+
 
     @Override
     protected void onDestroy() {

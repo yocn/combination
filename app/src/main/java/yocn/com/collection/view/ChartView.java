@@ -112,9 +112,10 @@ public class ChartView extends ImageView {
         handler = new MyHandler();
         if (BaseActivity.color != 0) {
             this.color = BaseActivity.color;
-        }else{
+        } else {
             this.color = getResources().getColor(R.color.blue_theme);
         }
+        Logger.d("color------------------" + color);
     }
 
     public void setData(List<ChartBean> list, String unit, boolean hasAnim) {
@@ -156,7 +157,7 @@ public class ChartView extends ImageView {
         Path path = new Path();
 
         width = canvas.getWidth();
-        height = canvas.getHeight();
+        height = 900;
         multi = (int) Math.ceil(width / 560);
         int width = canvas.getWidth();
         widthText = 50 * multi;// 图表左边显示价格的区域
@@ -392,7 +393,7 @@ public class ChartView extends ImageView {
 
     /**
      * 根据传入的价格得到需要展示在view中的Y坐标
-     * <p>
+     * <p/>
      * max：最大值 min:最小值 height：图表的高度
      *
      * @param x

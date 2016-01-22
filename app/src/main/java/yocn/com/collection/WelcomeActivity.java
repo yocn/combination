@@ -5,8 +5,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 
+import yocn.com.collection.application.MyApplication;
 import yocn.com.collection.utils.SharedPreferencesUtil;
+import yocn.com.collection.utils.Utils;
 
 public class WelcomeActivity extends Activity {
     boolean isFirstIn = false;
@@ -26,9 +29,11 @@ public class WelcomeActivity extends Activity {
         setContentView(getLayoutInflater().inflate(R.layout.activity_welcome, null));
         mSpUtil = new SharedPreferencesUtil(this, "setting");
         isFirstRun = mSpUtil.getBoolean("isFirstRun", true);
+        MyApplication.statusHeight = Utils.getStatusBarHeight(this);
+//        hideNaviBar();
 //        if (isFirstRun) {
         // 第一次进入
-        mHandler.sendEmptyMessageDelayed(SWITCH_DUIDEACTIVITY, 0);
+        mHandler.sendEmptyMessageDelayed(SWITCH_DUIDEACTIVITY, 3000);
 //        }
     }
 
@@ -58,8 +63,22 @@ public class WelcomeActivity extends Activity {
     private void goHome() {
         Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.anim_in, R.anim.anim_out);
+//        overridePendingTransition(R.anim.anim_in, R.anim.anim_out);
         this.finish();
+    }
+
+    /**
+     * 隐藏底部导航栏
+     */
+    private void hideNaviBar(){
+        View decorView = getWindow().getDecorView();
+        // Hide both the navigation bar and the status bar.
+        // SYSTEM_UI_FLAG_FULLSCREEN is only available on Android 4.1 and higher, but as
+        // a general rule, you should design your app to hide the status bar whenever you
+        // hide the navigation bar.
+        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
     }
 
     // 欢迎页面禁用back键

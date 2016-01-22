@@ -11,7 +11,7 @@
         <activity
             android:name=".WelcomeActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Base"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,7 +38,7 @@
             android:label="@string/app_name"/>
         <activity
             android:name=".RippleViewActivity"
-            android:theme="@style/Transparent"
+            android:theme="@style/AppThemeTrans"
             android:label="@string/app_name"/>
         <activity
             android:name=".ParabolaViewAct"
