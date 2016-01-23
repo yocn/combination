@@ -18,6 +18,8 @@
     <!-- 灰色 -->
     <color name="grey">#ffEBEBEB</color>
     <color name="grey_top_light_text">#ff999999</color>
+    <color name="grey_l_settings">#263238</color>
+    <color name="grey_l_settings_dark">#21272B</color>
     <color name="grey_top_dark_text">#ff333333</color>
     <color name="grey_tab_divider">#ffcccccc</color>
     <color name="grey_tab_background">#fff9f9f9</color>

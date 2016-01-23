@@ -26,7 +26,6 @@ public class RippleViewActivity extends BaseActivity {
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         rl_main = (RelativeLayout) findViewById(R.id.rl_main);
         RelativeLayout.LayoutParams param = (RelativeLayout.LayoutParams) toolbar.getLayoutParams();
-        System.out.println("FLAG_LAYOUT_NO_LIMITS--"+MyApplication.statusHeight);
         param.setMargins(0, MyApplication.statusHeight, 0, 0);
         toolbar.setLayoutParams(param);
         blur();

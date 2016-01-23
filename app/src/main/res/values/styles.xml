@@ -8,6 +8,11 @@
         <item name="colorPrimaryDark">@color/transparent</item>
     </style>
 
+    <style name="AppThemeSettingsDarkColor" parent="AppTheme.Base">
+        <item name="colorPrimary">@color/grey_l_settings</item>
+        <item name="colorPrimaryDark">@color/grey_l_settings_dark</item>
+    </style>
+
     <style name="AppThemeRed" parent="AppTheme.Base">
         <item name="colorPrimary">@color/red_theme</item>
         <item name="colorPrimaryDark">@color/red_theme</item>

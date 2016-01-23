@@ -31,8 +31,8 @@ import yocn.com.collection.view.SlideRightOutView;
 public class BaseActivity extends ActionBarActivity {
     private Toolbar toolbar;
     private SharedPreferencesUtil util;
-    public static int[] styles = {R.style.AppTheme, R.style.AppThemeRed, R.style.AppThemeMaterial, R.style.DarkMode, R.style.AppThemeTrans};
-    public static String[] strings = {"blue theme", "red theme", "material theme", "dark mode", "trans mode"};
+    public static int[] styles = {R.style.AppTheme, R.style.AppThemeRed, R.style.AppThemeMaterial, R.style.DarkMode, R.style.AppThemeSettingsDarkColor, R.style.AppThemeTrans};
+    public static String[] strings = {"blue theme", "red theme", "material theme", "dark mode", "liplop mode", "trans mode"};
     public static int TYPE_THEME = 0;
     public static int TYPE_THEME_NORMAL = 0;
     public static final int TYPE_THEME_BASE = 0;
@@ -78,7 +78,6 @@ public class BaseActivity extends ActionBarActivity {
             TYPE_THEME_NORMAL = BaseActivity.TYPE_THEME;
         }
         getColor();
-        System.out.println(BaseActivity.TYPE_THEME);
         setTheme(BaseActivity.styles[BaseActivity.TYPE_THEME]);
     }
 

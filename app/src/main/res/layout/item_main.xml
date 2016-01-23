@@ -18,20 +18,18 @@
         android:id="@+id/base_swipe_item_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_vertical"
-        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="3dp"
-            android:textColor="?dark_text_color"
             android:layout_weight="1"
-            android:gravity="left|center_vertical"
+            android:gravity="center"
+            android:textColor="?dark_text_color"
             android:textSize="21sp" />
-
     </LinearLayout>
 
 </android.support.v7.widget.CardView>

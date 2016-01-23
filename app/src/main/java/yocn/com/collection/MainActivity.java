@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -74,44 +75,46 @@ public class MainActivity extends BaseActivity {
         mDrawerToggle.syncState();
         drawer_layout.setDrawerListener(mDrawerToggle);
         //设置菜单列表
-        mDrawerSettingAdapter = new DrawerSettingAdapter(this);
+        mDrawerSettingAdapter = new DrawerSettingAdapter(this, drawer_layout);
         for (int i = 0; i < drawerStrings.length; i++) {
             mDrawerSettingBean = new DrawerSettingBean(drawerStrings[i]);
             mDrawerSettingBeanList.add(mDrawerSettingBean);
         }
         mDrawerSettingAdapter.setData(mDrawerSettingBeanList);
         lv_drawer.setAdapter(mDrawerSettingAdapter);
-        lv_drawer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-                    case 0:
-                        goSettingActivity();
-                        break;
-                    case 1:
-                        break;
-                }
-            }
-        });
         toolbar.setOnMenuItemClickListener(onMenuItemClick);
     }
 
     private void initScrollView() {
-        String[] mTitles = new String[]{"RippleView", "ChartView", "BarChartView", "ParabolaView", "Path", "RecycleView"};
-        Class[] mTarget = new Class[]{RippleViewActivity.class, ChartViewAct.class, BarChartViewAct.class, ParabolaViewAct.class, PathActivity.class, RecycleViewAct.class};
+        String[] mTitles = new String[]{"RippleView", "ChartView", "BarChartView", "ParabolaView", "Path", "RecycleView", "Empty"};
+        Class[] mTarget = new Class[]{RippleViewActivity.class, ChartViewAct.class, BarChartViewAct.class, ParabolaViewAct.class, PathActivity.class, RecycleViewAct.class, RecycleViewAct.class};
 
         for (int i = 0; i < mTarget.length; i++) {
             mMainItemBean = new MainItemBean(mTitles[i], mTarget[i]);
             mMainItemBeanList.add(mMainItemBean);
         }
-
         mMainAdapter = new MainRecycleAdapter(this, mMainItemBeanList);
-        rv_main.setLayoutManager(new LinearLayoutManager(this));
+        setMainType();
         // 设置ItemAnimator
         rv_main.setItemAnimator(new DefaultItemAnimator());
         // 设置固定大小
         rv_main.setHasFixedSize(true);
         rv_main.setAdapter(mMainAdapter);
+    }
+
+    /**
+     * 设置首页布局
+     */
+    private void setMainType() {
+        if (TYPE_MAIN_STYLE == TYPE_MAIN_HARI) {
+            /**设置为listview的布局*/
+            rv_main.setLayoutManager(new LinearLayoutManager(this));
+        } else if (TYPE_MAIN_STYLE == TYPE_MAIN_SQUARE) {
+            /**设置为gridview的布局*/
+            rv_main.setLayoutManager(new GridLayoutManager(this, 2));
+        } else {
+            rv_main.setLayoutManager(new LinearLayoutManager(this));
+        }
     }
 
     private Toolbar.OnMenuItemClickListener onMenuItemClick = new Toolbar.OnMenuItemClickListener() {
@@ -121,9 +124,13 @@ public class MainActivity extends BaseActivity {
                 case R.id.action_settings:
                     goSettingActivity();
                     break;
-                case android.R.id.home:
-                    goSettingActivity();
-                    Logger.d("123456789");
+                case R.id.action_main_list:
+                    TYPE_MAIN_STYLE = TYPE_MAIN_HARI;
+                    setMainType();
+                    break;
+                case R.id.action_main_grid:
+                    TYPE_MAIN_STYLE = TYPE_MAIN_SQUARE;
+                    setMainType();
                     break;
             }
             return true;
@@ -132,7 +139,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // TODO Auto-generated method stub
         if (item.getItemId() == android.R.id.home) {
             finish();
             return true;

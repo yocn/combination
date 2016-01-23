@@ -1,6 +1,7 @@
 package yocn.com.collection.adapter;
 
 import android.content.Intent;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,9 +23,11 @@ public class DrawerSettingAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private BaseActivity context;
     private ArrayList<DrawerSettingBean> mDrawerSettingBeanList = new ArrayList<DrawerSettingBean>();
+    DrawerLayout drawer_layout;
 
-    public DrawerSettingAdapter(BaseActivity context) {
+    public DrawerSettingAdapter(BaseActivity context, DrawerLayout drawer_layout) {
         super();
+        this.drawer_layout = drawer_layout;
         this.context = context;
         mInflater = LayoutInflater.from(context);
     }
@@ -69,6 +72,7 @@ public class DrawerSettingAdapter extends BaseAdapter {
         View.OnClickListener mClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                drawer_layout.closeDrawers();
                 switch (position) {
                     case 0:
                         /**Dark Mode*/
