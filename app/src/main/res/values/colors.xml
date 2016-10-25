@@ -5,15 +5,20 @@
     <color name="statusbar_bg">#FF006080</color>
     <array name="color"></array>
     <color name="black">#ff000000</color>
+    <color name="ptt_color_969696">#ff000000</color>
     <color name="white">#ffffffff</color>
     <color name="green">#ff00ff00</color>
     <color name="yellow">#ffffff00</color>
-    <color name="blue">#ffff0000</color>
+    <color name="blue">#ff0000ff</color>
     <color name="red">#ffff0000</color>
     <color name="transparent">#00000000</color>
     <color name="trans_grey">#88000000</color>
-    <color name="transparent_half">#d4ffffff</color>
+    <color name="trans_grey_55">#55000000</color>
+    <color name="trans_grey_33">#33000000</color>
+    <color name="trans_white_55">#55ffffff</color>
+    <color name="trans_white_33">#33ffffff</color>
     <color name="blank_trans">#23000000</color>
+    <color name="transparent_half">#d4ffffff</color>
     <color name="white_trans">#11ffffff</color>
     <!-- 灰色 -->
     <color name="grey">#ffEBEBEB</color>

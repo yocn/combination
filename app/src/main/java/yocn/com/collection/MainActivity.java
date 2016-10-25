@@ -86,8 +86,8 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initScrollView() {
-        String[] mTitles = new String[]{"RippleView", "ChartView", "BarChartView", "ParabolaView", "Path", "RecycleView", "Empty"};
-        Class[] mTarget = new Class[]{RippleViewActivity.class, ChartViewAct.class, BarChartViewAct.class, ParabolaViewAct.class, PathActivity.class, RecycleViewAct.class, RecycleViewAct.class};
+        String[] mTitles = new String[]{"RippleView", "ChartView", "BarChartView", "ParabolaView", "Path", "RecycleView", "TestActivity"};
+        Class[] mTarget = new Class[]{RippleViewActivity.class, ChartViewAct.class, BarChartViewAct.class, ParabolaViewAct.class, PathActivity.class, RecycleViewAct.class, TestViewAct.class};
 
         for (int i = 0; i < mTarget.length; i++) {
             mMainItemBean = new MainItemBean(mTitles[i], mTarget[i]);

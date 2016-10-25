@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<yocn.com.collection.view.SlideRightOutView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/slideRightOutView"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:id="@string/main_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/black">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="-10.0dip"
+            android:background="@drawable/shadow_bg" />
+
+        <RelativeLayout
+            android:id="@+id/main_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/bg_guide">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar" />
+
+            <Button
+                android:id="@+id/bt_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/toolbar"
+                android:text="invalidate" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:background="@drawable/bg_black_round_conner"
+                    android:maxHeight="100dp" />
+
+                <RelativeLayout
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:background="@color/blue"
+                    android:padding="5dp">
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@color/yellow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/bg_red"
+                        android:text="99+" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:background="@color/blue"
+                    android:gravity="center"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:text="发送"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <yocn.com.collection.view.UpView
+                android:id="@+id/upview"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/bt_text"
+                android:background="@color/green"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</yocn.com.collection.view.SlideRightOutView>

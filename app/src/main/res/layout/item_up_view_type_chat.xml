@@ -1,0 +1,20 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_bg"
+    android:layout_width="fill_parent"
+    android:layout_height="20dp"
+    android:layout_margin="5dp"
+    android:background="@drawable/gray_round_conner_half_trans"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/tv_setting"
+        android:layout_width="fill_parent"
+        android:layout_height="20dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/view"
+        android:gravity="center_vertical"
+        android:text="颠沛流离的小小：你的微信号多少"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+</RelativeLayout>
