@@ -15,6 +15,7 @@
                 android:id="@+id/rv_main"
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
+
                 android:layout_marginTop="50dp"
                 android:background="?dark_text_color" />
         </LinearLayout>

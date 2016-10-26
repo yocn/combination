@@ -22,6 +22,7 @@ import yocn.com.collection.adapter.MainRecycleAdapter;
 import yocn.com.collection.bean.DrawerSettingBean;
 import yocn.com.collection.bean.MainItemBean;
 import yocn.com.collection.utils.Logger;
+import yocn.com.collection.view.SpaceItemDecoration;
 
 public class MainActivity extends BaseActivity {
     private RecyclerView rv_main;
@@ -97,6 +98,7 @@ public class MainActivity extends BaseActivity {
         setMainType();
         // 设置ItemAnimator
         rv_main.setItemAnimator(new DefaultItemAnimator());
+        rv_main.addItemDecoration(new SpaceItemDecoration(50));
         // 设置固定大小
         rv_main.setHasFixedSize(true);
         rv_main.setAdapter(mMainAdapter);

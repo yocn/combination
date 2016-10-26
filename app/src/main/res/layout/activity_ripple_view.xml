@@ -3,14 +3,14 @@
     android:layout_width="fill_parent"
     android:id="@+id/rl_main"
     android:layout_height="fill_parent"
-    android:background="@drawable/icon">
+    android:background="@drawable/bg_guide">
 
     <include
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="50dp"
-        layout="@layout/toolbar" />
+        layout="@layout/toolbar_trans" />
 
     <yocn.com.collection.view.RippleView
         android:id="@+id/btn"
@@ -22,11 +22,5 @@
         android:padding="55dp"
         android:text="Click!Click!Click!"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:src="@drawable/live_gifttext_bg_3"/>
 
 </RelativeLayout>

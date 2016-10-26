@@ -28,7 +28,7 @@ public class RippleViewActivity extends BaseActivity {
         RelativeLayout.LayoutParams param = (RelativeLayout.LayoutParams) toolbar.getLayoutParams();
         param.setMargins(0, MyApplication.statusHeight, 0, 0);
         toolbar.setLayoutParams(param);
-        blur();
+//        blur();
     }
 
     private void blur() {
