@@ -12,7 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -21,7 +20,6 @@ import yocn.com.collection.adapter.DrawerSettingAdapter;
 import yocn.com.collection.adapter.MainRecycleAdapter;
 import yocn.com.collection.bean.DrawerSettingBean;
 import yocn.com.collection.bean.MainItemBean;
-import yocn.com.collection.utils.Logger;
 import yocn.com.collection.view.SpaceItemDecoration;
 
 public class MainActivity extends BaseActivity {
@@ -87,8 +85,13 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initScrollView() {
-        String[] mTitles = new String[]{"RippleView", "ChartView", "BarChartView", "ParabolaView", "Path", "RecycleView", "TestActivity"};
-        Class[] mTarget = new Class[]{RippleViewActivity.class, ChartViewAct.class, BarChartViewAct.class, ParabolaViewAct.class, PathActivity.class, RecycleViewAct.class, TestViewAct.class};
+        String[] mTitles = new String[]
+                {"RippleView", "ChartView", "BarChartView", "ParabolaView",
+                        "Path", "RecycleView", "TestActivity", "CustomScroll", "CustomScrollListView"};
+        Class[] mTarget = new Class[]
+                {RippleViewActivity.class, ChartViewAct.class, BarChartViewAct.class,
+                        ParabolaViewAct.class, PathActivity.class, RecycleViewAct.class,
+                        TestViewAct.class, CustomScrollImageViewActivity.class, CustomScrollImageViewListViewActivity.class};
 
         for (int i = 0; i < mTarget.length; i++) {
             mMainItemBean = new MainItemBean(mTitles[i], mTarget[i]);

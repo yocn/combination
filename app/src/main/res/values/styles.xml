@@ -64,4 +64,9 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
     </style>
+
+    <style name="AppTheme.Launcher" parent="@android:style/Theme.NoTitleBar.Fullscreen">
+        <item name="android:windowBackground">@drawable/bg_guide</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
 </resources>
