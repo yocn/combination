@@ -1,7 +1,9 @@
 <resources>
 
     <!--定义主题使用parent引用我们自定义的AppTheme.Base主题-->
-    <style name="AppTheme" parent="AppTheme.Base"></style>
+    <style name="AppTheme" parent="AppTheme.Base">
+        <item name="android:windowBackground">@drawable/bg_window</item>
+    </style>
 
     <style name="AppThemeTrans" parent="AppTheme.Base">
         <item name="colorPrimary">@color/transparent</item>

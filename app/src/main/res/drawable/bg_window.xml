@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:drawable="@drawable/p_login_bg"/>
+
+    <item
+        android:gravity="top"
+        android:top="250dp">
+
+        <bitmap
+            android:gravity="top"
+            android:src="@drawable/ayl"/>
+
+    </item>
+
+</layer-list>
