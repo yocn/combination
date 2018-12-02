@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -28,7 +28,7 @@ import yocn.com.collection.view.SlideRightOutView;
 /**
  * Created by Yocn on 2015/12/2 0002.
  */
-public class BaseActivity extends ActionBarActivity {
+public class BaseActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private SharedPreferencesUtil util;
     public static int[] styles = {R.style.AppTheme, R.style.AppThemeRed, R.style.AppThemeMaterial, R.style.DarkMode, R.style.AppThemeSettingsDarkColor, R.style.AppThemeTrans};

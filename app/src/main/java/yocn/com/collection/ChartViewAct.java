@@ -2,7 +2,6 @@ package yocn.com.collection;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
