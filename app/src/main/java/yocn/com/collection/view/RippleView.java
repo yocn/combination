@@ -1,5 +1,7 @@
 package yocn.com.collection.view;
 
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -11,10 +13,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
-
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.nineoldandroids.animation.ObjectAnimator;
 
 public class RippleView extends Button {
     private PointF touchPoint = new PointF();
@@ -60,7 +58,7 @@ public class RippleView extends Button {
         case MotionEvent.ACTION_UP:
             objectAnimator = ObjectAnimator.ofFloat(this, "radius", 150, 1000).setDuration(400);
             objectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-            objectAnimator.addListener(new AnimatorListener() {
+            objectAnimator.addListener(new Animator.AnimatorListener() {
 
                 @Override
                 public void onAnimationStart(Animator arg0) {
